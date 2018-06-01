@@ -1,41 +1,42 @@
 # CORS middleware for Micro
 
-### Summary
+## Summary
 
 Simple [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) middleware for Zeit's [Micro](https://github.com/zeit/micro)
 
-[![CircleCI](https://circleci.com/gh/possibilities/micro-cors.svg?style=svg)](https://circleci.com/gh/possibilities/micro-cors)
+[![Build Status](https://travis-ci.com/amio/micro-cors.svg?branch=master)](https://travis-ci.com/amio/micro-cors)
 
-### Install
+## Install
 
 ```
-yarn add micro-cors
+npm install @amio/micro-cors
 ```
 
-### Usage
+## Usage
 
 Basic
 
 ```js
-const { send } = require('micro')
-const cors = require('micro-cors')()
-const handler = (req, res) => send(res, 200, 'ok!')
+const micro = require('micro')
+const cors = require('micro-cors')
+const handler = (req, res) => micro.send(res, 200, 'ok!')
 
-module.exports = cors(handler)
+module.exports = cors()(handler)
 ```
 
 With options
 
 ```js
-const { send } = require('micro')
-const microCors = require('micro-cors')
-const cors = microCors({ allowMethods: ['PUT', 'POST'] })
-const handler = (req, res) => send(res, 200, 'ok!')
+const micro = require('micro')
+const cors = require('micro-cors')
+const handler = (req, res) => micro.send(res, 200, 'ok!')
 
-module.exports = cors(handler)
+const opts = { allowMethods: 'PUT,POST' }
+
+module.exports = cors(opts)(handler)
 ```
 
-#### Options
+### Options
 
 ##### `allowMethods` &lt;String>
 
