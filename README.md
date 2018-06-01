@@ -1,9 +1,9 @@
 # micro-cors
 
-Simple [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) middleware for Zeit's [Micro](https://github.com/zeit/micro)
-
 [![][npm-badge]][npm-link]
 [![Build Status](https://travis-ci.com/amio/micro-cors.svg?branch=master)](https://travis-ci.com/amio/micro-cors)
+
+Simple [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) middleware for Zeit's [Micro](https://github.com/zeit/micro)
 
 ## Install
 
@@ -18,6 +18,7 @@ Basic
 ```js
 const micro = require('micro')
 const cors = require('micro-cors')
+
 const handler = (req, res) => micro.send(res, 200, 'ok!')
 
 module.exports = cors()(handler)
@@ -28,11 +29,11 @@ With options
 ```js
 const micro = require('micro')
 const cors = require('micro-cors')
+
+const options = { allowMethods: 'PUT,POST' }
 const handler = (req, res) => micro.send(res, 200, 'ok!')
 
-const opts = { allowMethods: 'PUT,POST' }
-
-module.exports = cors(opts)(handler)
+module.exports = cors(options)(handler)
 ```
 
 ### Options
