@@ -1,11 +1,8 @@
-import test from 'ava'
-import listen from 'test-listen'
-
-import microCors from './index'
-import micro from 'micro'
-import request from 'request-promise'
-
-import 'babel-polyfill'
+const test = require('ava')
+const micro = require('micro')
+const listen = require('test-listen')
+const request = require('request-promise')
+const microCors = require('./index')
 
 const testRequestOptions = {
   json: true,
@@ -30,11 +27,10 @@ test('adds default max age header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const maxAgeHeader = response.headers['access-control-max-age']
     t.deepEqual(maxAgeHeader, '86400')
@@ -47,11 +43,10 @@ test('adds configured max age header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const maxAgeHeader = response.headers['access-control-max-age']
     t.deepEqual(maxAgeHeader, 'foo')
@@ -64,11 +59,10 @@ test('adds default allow origin header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowOriginHeader =
       response.headers['access-control-allow-origin']
@@ -82,11 +76,10 @@ test('adds configured allow origin header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowOriginHeader =
       response.headers['access-control-allow-origin']
@@ -100,11 +93,10 @@ test('adds default allow methods header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowMethodsHeader = response.headers['access-control-allow-methods']
     t.deepEqual(allowMethodsHeader, 'POST,GET,PUT,PATCH,DELETE,OPTIONS')
@@ -117,11 +109,10 @@ test('adds configured allow methods header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowMethodsHeader = response.headers['access-control-allow-methods']
     t.deepEqual(allowMethodsHeader, 'FOO')
@@ -134,11 +125,10 @@ test('adds default allow headers header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowMethodsHeader = response.headers['access-control-allow-headers']
     t.deepEqual(
@@ -154,11 +144,10 @@ test('adds configured allow headers header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowMethodsHeader = response.headers['access-control-allow-headers']
     t.deepEqual(
@@ -174,11 +163,10 @@ test('allows configured expose headers header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const exposeMethodsHeader = response.headers['access-control-expose-headers']
     t.deepEqual(
@@ -194,11 +182,10 @@ test('adds allow credentials header', async t => {
   const url = await listen(router)
 
   for (let method of methods) {
-    const response = await request({
+    const response = await request(Object.assign({
       url,
-      method,
-      ...testRequestOptions
-    })
+      method
+    }, testRequestOptions))
 
     const allowCredentialsHeader =
       response.headers['access-control-allow-credentials']
@@ -212,11 +199,10 @@ test('responds to OPTIONS requests', async t => {
   const url = await listen(router)
   const method = 'OPTIONS'
 
-  const response = await request({
+  const response = await request(Object.assign({
     url,
-    method,
-    ...testRequestOptions
-  })
+    method
+  }, testRequestOptions))
 
   t.deepEqual(200, response.statusCode)
   t.deepEqual({}, response.body)
