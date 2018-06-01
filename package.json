@@ -1,6 +1,6 @@
 {
   "name": "@amio/micro-cors",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple CORS middleware for Zeit's Micro",
   "repository": "https://github.com/amio/micro-cors",
   "contributors": [
