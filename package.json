@@ -1,9 +1,12 @@
 {
-  "name": "micro-cors",
-  "description": "Simple CORS middleware for Zeit's Micro",
+  "name": "@amio/micro-cors",
   "version": "0.0.4",
-  "repository": "https://github.com/possibilities/micro-cors",
-  "author": "Mike Bannister <mikebannister@gmail.com>",
+  "description": "Simple CORS middleware for Zeit's Micro",
+  "repository": "https://github.com/amio/micro-cors",
+  "contributors": [
+    "Mike Bannister <mikebannister@gmail.com>",
+    "Amio <amio.cn@gmail.com>"
+  ],
   "main": "index.js",
   "license": "MIT",
   "scripts": {
