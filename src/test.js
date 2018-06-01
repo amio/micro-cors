@@ -149,7 +149,7 @@ test('adds default allow headers header', async t => {
 })
 
 test('adds configured allow headers header', async t => {
-  const cors = microCors({ allowHeaders: ['BAR'] })
+  const cors = microCors({ allowHeaders: 'BAR' })
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
@@ -169,7 +169,7 @@ test('adds configured allow headers header', async t => {
 })
 
 test('allows configured expose headers header', async t => {
-  const cors = microCors({ exposeHeaders: ['BAR'] })
+  const cors = microCors({ exposeHeaders: 'BAR' })
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
