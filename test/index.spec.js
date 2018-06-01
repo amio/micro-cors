@@ -2,7 +2,7 @@ const test = require('ava')
 const micro = require('micro')
 const listen = require('test-listen')
 const request = require('request-promise')
-const microCors = require('./index')
+const microCors = require('..')
 
 const testRequestOptions = {
   json: true,
