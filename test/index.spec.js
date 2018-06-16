@@ -13,8 +13,9 @@ const testRequestOptions = {
 }
 
 const methods = [
-  'POST',
+  'HEAD',
   'GET',
+  'POST',
   'PUT',
   'PATCH',
   'DELETE',
@@ -92,14 +93,15 @@ test('adds default allow methods header', async t => {
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
-  for (let method of methods) {
+  // Preflight only
+  for (let method of ['OPTIONS']) {
     const response = await request(Object.assign({
       url,
       method
     }, testRequestOptions))
 
     const allowMethodsHeader = response.headers['access-control-allow-methods']
-    t.deepEqual(allowMethodsHeader, 'POST,GET,PUT,PATCH,DELETE,OPTIONS')
+    t.deepEqual(allowMethodsHeader, 'HEAD,GET,POST,PUT,PATCH,DELETE,OPTIONS')
   }
 })
 
@@ -108,7 +110,8 @@ test('adds configured allow methods header', async t => {
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
-  for (let method of methods) {
+  // Preflight only
+  for (let method of ['OPTIONS']) {
     const response = await request(Object.assign({
       url,
       method
@@ -124,7 +127,8 @@ test('adds default allow headers header', async t => {
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
-  for (let method of methods) {
+  // Preflight only
+  for (let method of ['OPTIONS']) {
     const response = await request(Object.assign({
       url,
       method
@@ -133,7 +137,7 @@ test('adds default allow headers header', async t => {
     const allowMethodsHeader = response.headers['access-control-allow-headers']
     t.deepEqual(
       allowMethodsHeader,
-      'X-Requested-With,Access-Control-Allow-Origin,X-HTTP-Method-Override,Content-Type,Authorization,Accept'
+      'X-Requested-With,X-HTTP-Method-Override,Access-Control-Allow-Origin,Authorization,Content-Type,Accept'
     )
   }
 })
@@ -143,7 +147,8 @@ test('adds configured allow headers header', async t => {
   const router = micro(cors(() => ({})))
   const url = await listen(router)
 
-  for (let method of methods) {
+  // Preflight only
+  for (let method of ['OPTIONS']) {
     const response = await request(Object.assign({
       url,
       method
