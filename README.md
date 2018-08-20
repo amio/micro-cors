@@ -1,9 +1,9 @@
 # micro-cors
 
-[![][npm-badge]][npm-link]
-[![Build Status](https://travis-ci.com/amio/micro-cors.svg?branch=master)](https://travis-ci.com/amio/micro-cors)
+[![@amio/micro-cors][npm-badge]][npm-link]
+[![Build Status][build-src]][build-link]
 
-Simple [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) middleware for Zeit's [Micro](https://github.com/zeit/micro)
+Simple [CORS][cors-link] middleware for Zeit's [Micro](https://github.com/zeit/micro)
 
 ## Install
 
@@ -58,6 +58,8 @@ default: `86400`
 
 default: `*`
 
-
-[npm-badge]: https://img.shields.io/npm/v/@amio/micro-cors.svg
+[cors-link]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+[npm-badge]: https://badgen.net/npm/v/@amio/micro-cors
 [npm-link]: https://www.npmjs.com/package/@amio/micro-cors
+[build-src]: https://travis-ci.com/amio/micro-cors.svg?branch=master
+[build-link]: https://travis-ci.com/amio/micro-cors
