@@ -1,4 +1,4 @@
-# micro-cors
+# @amio/micro-cors
 
 [![@amio/micro-cors][npm-badge]][npm-link]
 [![Build Status][build-src]][build-link]
